@@ -8,8 +8,9 @@ app = Flask(__name__, static_url_path="/static")
 
 apiKey = os.environ['geminiai']
 
-def getInfo(promt):    
+def getInfo(promt): 
     promt = str(promt)
+    
     headers = {"Content-Type": "application/json", "x-goog-api-key": apiKey}
 
     data = {"contents": [{"role": "user", "parts": [{"text": promt}]}]}
@@ -27,9 +28,18 @@ def text():
     global ans
 
     form = request.form
-    # print(form['question-box'])
+    print(form['question-box'])
 
-    ans = getInfo(form['question-box'])
+    if form['question-box'] == "":
+        ans = 404
+        return redirect("/")
+        
+    response = getInfo(form['question-box'])
+
+    # print(response)
+    
+    ans = response.split("\n")
+    
     # print("text ans: ",ans)
 
     return redirect("/")
@@ -47,15 +57,23 @@ def index():
     # print("index ans: ", ans)
 
     if ans == "":
-        page = page.replace("Your answer will apper here", "Your answer will apper here")
-    elif "gemini" in ans.lower():    
-        page = page.replace("Your answer will apper here", "You know, you should not pry into other people's life.")
+        page += "<p>Your answer will apper here</p>"
+
+    elif ans == 404:
+        page += "<p>Do not submit empty form!</p>"
     else:
-        page = page.replace("Your answer will apper here", ans)
-    
+        for paragraph in ans:
+            page += f"<p>{paragraph.strip()}</p>"
+
+    page += """
+    </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>
+    """
 
     return page
 
-# print(getInfo(promt))
 
 app.run(host="0.0.0.0", port=81)
