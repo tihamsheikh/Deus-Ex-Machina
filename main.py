@@ -36,7 +36,7 @@ def text():
         
     response = getInfo(form['question-box'])
 
-    # print(response)
+    print(response)
     
     ans = response.split("\n")
     
