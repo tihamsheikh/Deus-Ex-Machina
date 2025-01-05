@@ -1,5 +1,6 @@
-import os, requests, json
-from flask import Flask, request, redirect
+import os
+import requests
+from flask import Flask, redirect, request
 
 global ans
 ans = ""
@@ -10,7 +11,7 @@ apiKey = os.environ['geminiai']
 
 def getInfo(promt): 
     promt = str(promt)
-    
+
     headers = {"Content-Type": "application/json", "x-goog-api-key": apiKey}
 
     data = {"contents": [{"role": "user", "parts": [{"text": promt}]}]}
@@ -28,22 +29,22 @@ def text():
     global ans
 
     form = request.form
-    print(form['question-box'])
+    # print(form['question-box'])    # error handling
 
     if form['question-box'] == "":
         ans = 404
         return redirect("/")
-        
-    response = getInfo(form['question-box'])
 
-    print(response)
-    
+    response = getInfo(form['question-box'])    # function call
+
+    # print(response)    # error handling
+
     ans = response.split("\n")
-    
+
     # print("text ans: ",ans)
 
     return redirect("/")
-    
+
 
 @app.route("/")
 def index():
@@ -56,6 +57,7 @@ def index():
     # print("in index 2: ", request.form)
     # print("index ans: ", ans)
 
+    # filter
     if ans == "":
         page += "<p>Your answer will apper here</p>"
 
@@ -68,12 +70,11 @@ def index():
     page += """
     </div>
         </div>
-        <script src="script.js"></script>
     </body>
     </html>
     """
 
     return page
 
-
-app.run(host="0.0.0.0", port=81)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=81)
