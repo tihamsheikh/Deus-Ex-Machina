@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Bot</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-line {
+            border: 0;
+            border-top: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #search-bar {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        #ask-me {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #ask-me:hover {
+            background-color: #0056b3;
+        }
+
+        .answer-box {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+
+        h2 {
+            margin: 0;
+            color: #333;
+        }
+        .ask-style{
+        margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <h2 class="ask-style">Ask Away</h2>
+        <form  method="post" action="/text" class="search-box">
+            <input type="text" name="question-box" id="search-bar" placeholder="Ask Here....">
+            <button  type="submit" id="ask-me">Submit</button>
+        </form> 
+        <hr class="top-line">
+
+        <div class="answer-box">
+            <h2>Answer: </h2>
+
