@@ -2,6 +2,7 @@
 # Just like wikipedia but better
 # It uses googles gemini language model
 
+# import google-genai and flask
 from google import genai    # google-genai 1.3.0
 from flask import Flask, render_template, request, redirect
 import const    # for api key. Use your own as a variable
