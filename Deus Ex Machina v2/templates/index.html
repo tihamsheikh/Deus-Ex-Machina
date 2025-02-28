@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+
+    <title>DEM</title>
+</head>
+
+<body>
+    <!-- Input Section -->
+    <form method="post" action="/text" class="input-container">
+        <h2 class="title-input">Deus Ex Machina</h2>
+
+        <input type="text" name="question-box" class="input-box" placeholder="Type a message...">
+
+        <!-- Button container -->
+        <div class="btn-container">
+            <button type="submit" class="btn">Ask</button>
+            <button type="reset" class="btn reset" onClick="reset_page()">Reset</button>
+
+        </div>
+    </form>
+
+    <!-- Answer Section -->
+    <div class="answer-container">
+        <h3 class="title-answer">Answer</h3> <hr><br>
+            <!-- Used jinja2 to format the output -->
+            {% if answer %}
+                {% if answer is string %}
+                    <p>{{ answer }}</p>
+                {% else %}
+                    {% for paragraph in answer %}
+                        <p>{{ paragraph.strip()|replace("*", "") }}</p>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                <p>Your answer will appear here.</p>
+            {% endif %}
+    </div>
+    <!-- To reload the page via reset button -->
+    <script defer>
+        function reset_page() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
+
+
+

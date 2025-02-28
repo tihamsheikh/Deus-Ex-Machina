@@ -1,0 +1,119 @@
+/* Design for the entire webpage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Design of the main body */
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 100px; /* To prevent overlap with fixed input section */
+
+}
+/* Input Section */
+.input-container {
+    position: fixed;
+    top: 0;
+    width: 85%; /* Size of the input section */
+    max-width: 800px;
+    background: #1e1e1e;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Stack the input box and buttons vertically */
+    align-items: stretch;
+    border: 4px solid #444;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.input-box {
+    padding: 10px;
+    font-size: 16px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between input and buttons */
+}
+
+.input-box:focus {
+    outline: none;
+}
+
+/* Button container */
+.input-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Space between buttons */
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Button position and layout */
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    /* Button shadow depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Depth effect */
+    transition: all 0.3s ease; /* Smooth transition for hover and active effects */
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Active (clicking) effect */
+.btn:active {
+    background-color: #00408d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow when clicked */
+    transform: translateY(2px); /* Pressed down effect */
+}
+
+.btn.reset {
+    background-color: #c74246;
+}
+
+/* Layout for buttons to be in a single row */
+.input-container .btn-container {
+    display: flex; /* Align buttons in a row */
+    gap: 10px; /* Set the gap between buttons */
+    justify-content: center; /* Align buttons to the center */
+}
+
+
+/* Answer Section */
+.answer-container {
+    width: 70%;
+    max-width: 800px;
+    margin-top: 75px; /* This adds space between input and answer containers */
+    background: #1e1e1e;
+    padding: 15px;
+    border: 4px solid #444;
+    border-radius: 8px;
+    min-height: 100px;
+    text-align: left;   /* Answer text alignment */
+}
+
+.title-input, .title-answer {
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
