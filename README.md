@@ -174,5 +174,3 @@ Special thanks to:
 * The **Flask** community
 * Every contributor dreaming of real AGI
 
-
-Just tell me!
