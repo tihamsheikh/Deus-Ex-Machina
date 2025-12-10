@@ -67,15 +67,22 @@ The goal is simplicity. Anyone can read, understand, modify, or extend the proje
 ## 📂 Project Structure
 
 ```
-Deus-Ex-Machina/
+Deus Ex Machina v2/       # Updated version
 │── app.py                # Main Flask backend
 │── templates/
 │     └── index.html      # Frontend page
 │── static/
-│     ├── style.css       # Styling
-│     └── script.js       # Frontend logic
+│     └── style.css       # Styling
+
+deus-ex-machina-v1/       # Older version
+│── main.py               # Main Flask backend
+│── page.html             # Frontend page  
+├── style.css             # Styling
+
 │── README.md
 │── requirements.txt
+
+
 ```
 
 ---
@@ -85,7 +92,7 @@ Deus-Ex-Machina/
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/Deus-Ex-Machina.git
+https://github.com/tihamsheikh/Deus-Ex-Machina.git
 cd Deus-Ex-Machina
 ```
 
@@ -100,13 +107,19 @@ pip install -r requirements.txt
 Create a `.env` file or update your code with:
 
 ```
-GEMINI_API_KEY=your_api_key_here
+For v2
+    api_key=const.key  # gemini api key-> (const.key)
+
+For v1
+  apiKey = os.environ['geminiai']  # gemini api key-> (os.environ['geminiai'])
+
 ```
 
 ### 4️⃣ Run the Flask app
 
 ```bash
-python app.py
+v2-> python app.py
+v1-> python main.py
 ```
 
 Visit:
